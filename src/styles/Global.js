@@ -19,6 +19,12 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.colors.background};
     transition: background .15s;
   }
+
+  @media(max-width: 425px) {
+    html {
+      font-size: 50%;
+    }
+  }
 `
 
 export default GlobalStyle;
