@@ -18,6 +18,10 @@ import { dark, light } from '../../styles/Themes';
 
 import { format } from 'date-fns';
 
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Layout() {
   const { toggleTheme, theme } = useContext(ThemeContext);
 
@@ -32,6 +36,10 @@ export default function Layout() {
   }
 
   async function getUser() {
+    if (username.trim() === '') {
+      return toast.error("Invalid username");
+    }
+
     try {
       setLoading(true);
 
@@ -42,7 +50,7 @@ export default function Layout() {
 
       setUser(data);
     } catch (error) {
-      alert(error);
+      toast.error("Username not found");
     } finally {
       setLoading(true);
     }
@@ -54,6 +62,11 @@ export default function Layout() {
 
   return (
     <Container>
+      <ToastContainer 
+        style={{
+          fontSize: '1.25rem',
+        }}
+      />
       <Wrapper>
         <Header>
           <h1>Devfinder</h1>

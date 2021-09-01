@@ -214,6 +214,13 @@ export const ProfileInformation = styled.div`
         opacity: .9;
         font-size: 1.15rem;
 
+        > span, a {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          max-width: 25ch;
+        }
+
         > a {
           color: ${({ theme }) => theme.colors.text};
           text-decoration: none;
